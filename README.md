@@ -1,6 +1,6 @@
 
 
-# a trait to use cache easily for Laravel
+# A Trait to use cache easily for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/deathkel/EasyCache.svg?style=flat-square)](https://packagist.org/packages/deathkel/EasyCache)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
