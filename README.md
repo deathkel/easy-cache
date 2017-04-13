@@ -24,7 +24,7 @@ public class test(){
         //.....
     }
 
-    protect function WantToBeCache(){ // protect function will be cached automatically
+    protected function WantToBeCache(){ // protected function will be cached automatically
         static $expire = 60; //minute that this function want to be cached
     }
 }
