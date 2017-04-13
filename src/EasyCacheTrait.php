@@ -23,11 +23,11 @@ trait CacheProtectFunction
             return call_user_func_array([$this, $method], $parameters);
         };
 
-        if (Input::get('skipCache')) {
+        if (config('app.debug') && Input::get('skipCache')) {
             return $closure();
         }
 
-        if (Input::get('forgetCache')) {
+        if (config('app.debug') && Input::get('forgetCache')) {
             Cache::forget($cacheName);
         }
 
