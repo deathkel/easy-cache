@@ -30,8 +30,8 @@ public class test(){
 }
 ```
 ### when in debug pattern
-* add 'skipCache' to http query param will skip cache and exec function
-* add 'forgetCache' to http query param will forget cache and restore cache
+* add 'skipCache=1' to http query param will skip cache and exec function
+* add 'forgetCache=1' to http query param will forget cache and restore cache
 
 ## TODO
 * add test example
