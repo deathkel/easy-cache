@@ -8,6 +8,9 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/deathkel/EasyCache.svg?style=flat-square)](https://scrutinizer-ci.com/g/deathkel/EasyCache)
 [![Total Downloads](https://img.shields.io/packagist/dt/deathkel/EasyCache.svg?style=flat-square)](https://packagist.org/packages/deathkel/EasyCache)
 
+## INSTALL
+`composer require deathkel/easy-cache`
+
 ## USAGE
 * this trait will auto cache protect function
 * default cache time is 60 minutes. you can define a `static` variable `$expire` for each function
