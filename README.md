@@ -26,6 +26,8 @@ public class test(){
     }
 }
 ```
+* add 'skipCache' to http query param will skip cache and exec function
+* add 'forgetCache' to http query param will forget cache and restore cache
 
 ## TODO
 * add test example

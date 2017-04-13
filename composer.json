@@ -1,5 +1,5 @@
 {
-    "name": "deathkel/EasyCache",
+    "name": "deathkel/easy-cache",
     "description": "A Trait to use cache easily for Laravel",
     "homepage": "https://github.com/deatkel/EasyCache",
     "type": "library",
