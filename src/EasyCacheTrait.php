@@ -15,7 +15,7 @@ trait CacheProtectFunction
      */
     public function __call($method, $parameters)
     {
-        $cacheName = $method . "_" . md5(json_encode($parameters));
+        $cacheName = __CLASS__ . ":" . $method . "_" . md5(json_encode($parameters));
 
         $expire = $this->getExpire($method);
 
@@ -51,5 +51,22 @@ trait CacheProtectFunction
             $expire = 60;
         }
         return $expire;
+    }
+
+    /**
+     * @return bool
+     * delete all cache from the class
+     * TODO support other driver
+     */
+    public function forgetCache(){
+        $cacheName = __CLASS__ . ':*';
+
+        $redis = Cache::getRedis();
+        $keys = $redis->keys($cacheName);
+        if ($keys) {
+            $redis->del($keys);
+        };
+
+        return true;
     }
 }
