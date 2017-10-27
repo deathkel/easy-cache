@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 trait CacheProtectFunction
 {
@@ -22,18 +23,26 @@ trait CacheProtectFunction
         $closure = function () use ($method, $parameters) {
             return call_user_func_array([$this, $method], $parameters);
         };
+        try {
+            if (config('app.debug') && Input::get('skipCache')) {
+                return $closure();
+            }
 
-        if (config('app.debug') && Input::get('skipCache')) {
+            if (config('app.debug') && Input::get('forgetCache')) {
+                Cache::forget($cacheName);
+            }
+
+            //do not cache when expire is empty
+            if ($expire) {
+                $result = Cache::remember($cacheName, $expire, $closure);
+                return $result;
+            } else {
+                return $closure();
+            }
+        }catch (\Throwable $throwable){
+            Log::error($throwable);
             return $closure();
         }
-
-        if (config('app.debug') && Input::get('forgetCache')) {
-            Cache::forget($cacheName);
-        }
-
-        $result = Cache::remember($cacheName, $expire, $closure);
-
-        return $result;
     }
 
     /**
