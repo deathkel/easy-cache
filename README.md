@@ -45,6 +45,10 @@ public class test(){
     }
 }
 ```
+### delete cache
+* call method `forgetCache` to delete all cache in class
+* call method `forgetMethodCache` to delete all cache in the method
+
 ### when in debug pattern
 * add 'skipCache=1' to http query param will skip cache and exec function
 * add 'forgetCache=1' to http query param will forget cache and restore cache
