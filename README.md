@@ -19,13 +19,29 @@
 public class test(){
 
     use EasyCacheTrait;
-
+    
+    public function __construct(){
+        $this->default_expire = 1; //change default expire time (min)
+    }
+    
     public function DontWantToBeCache(){ // public function will not be cached
         //.....
     }
 
     protected function WantToBeCache(){ // protected function will be cached automatically
         static $expire = 60; //minute that this function want to be cached
+    }
+    
+    private static function _getCacheKeyPrefixLevel1(){
+        return "test:"; //overwrite cache prefix level 1, default is class name
+    }
+    
+    private static function _getCacheKeyPrefixLevel2($method){
+        return self::_getCacheKeyPrefixLevel1() . $method . ":"; //overwrite cache prefix level 2
+    }
+    
+    private static function _getCacheKey($method, $params){
+        return self::_getCacheKeyPrefixLevel2($method) . md5(json_encode($params)); //overwrite cache key
     }
 }
 ```
